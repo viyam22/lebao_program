@@ -1,0 +1,10 @@
+.index,
+.test,
+.result1,
+.result2 {
+  display: none;
+}
+.show {
+  display: block;
+}
+
