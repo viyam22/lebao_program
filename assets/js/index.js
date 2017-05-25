@@ -1,10 +1,66 @@
 $(function() {
+$.fn.longPress = function(fn0, fn1, fn2) {
+  var oldTime, newTime, costTime;
+  this.on('touchstart', function(event) {
+    event.preventDefault();
+    oldTime = Date.now();
+    fn0();
+  });
+  this.on('touchend', function(event) {
+    event.preventDefault();
+    newTime = Date.now();
+    costTime = newTime - oldTime;
+    if (costTime <= 1500) {
+      if (fn2) {
+        fn2();
+      }
+    } else {
+      fn1();
+    }
+  });
+}
 var listenHashChange = function(dosome) {
   if( ("onhashchange" in window) && ((typeof document.documentMode==="undefined") || document.documentMode==8)) {  
     window.onhashchange = dosome;
   } else {  
     //兼容性写法之后再来 
   }
+}
+var moveImg = function(imgClass, imgCount, time) {
+  var i = 0;
+  var a = 0;
+  $(imgClass).each(function() {
+    $(this)[0].onload = function() {
+      a++;
+      console.log(a);
+      if (a === imgCount) {
+        var interval = setInterval(function() {
+          $(imgClass).eq(i).removeClass('top');
+          $(imgClass).eq(++i).addClass('top');
+          if (i === imgCount) {
+            $('.result1-btn-wrap').addClass('show');
+            clearInterval(interval);
+          }
+        }, time);
+      }      
+    }
+  });
+
+  // $(imgClass)[0].onload = function() {
+  //   a++;
+  //   console.log(a);
+  //   if (a === imgCount) {
+  //     var interval = setInterval(function() {
+  //       $(imgClass).eq(i).removeClass('top');
+  //       $(imgClass).eq(++i).addClass('top');
+  //       if (i === imgCount) {
+  //         $('.result1-btn-wrap').addClass('show');
+  //         clearInterval(interval);
+  //       }
+  //     }, time);
+  //   }
+  // };
+  
 }
 
 var removeShow = function() {
@@ -26,10 +82,11 @@ var changePage = function() {
     case '#/result1':
       $('.result1').addClass('show');
       localStorage.setItem('result', '1');
+      moveImg('.result1-bg', 9, 400);
       break;
     case '#/result2':
       $('.result2').addClass('show');
-      localStorage.setItem('result', '1');
+      localStorage.setItem('result', '2');
       break;
   }
 }
@@ -42,22 +99,55 @@ var checkIsTest = function() {
     location.hash = '#/result' + i;
   }
 }
+var setResult = function() {
+  var result = parseInt(Math.random()*4);
+  return result;
+}
+// var moveImg = function(father, imageName, count) {
+//   var str = '';
+//   for (var i = 0; i < count; i++) {
+//     str += '<img class="" href="./assets/images/">'+ imageName + i +'</img>';
+//   }
+//   $(father).html(str);
+//   $(imageName)[0].onload = function() {
+//     count--;
+//     if (count === 0) {
+//       //图片加载完成，开始动画
+//       setInterval(function() {
+
+//       }, 300);
+//     }
+//   }
+// }
+
+
+
 
 void function() {
   location.hash = '#/';
   listenHashChange(changePage);
   checkIsTest();
 
-  $('.index').on('click', function() {
-    location.hash = '#/test';
-  });
-  $('.test').on('click', function() {
+  $('.test-btn').longPress(function() {
+    $('.test-btn').addClass('test-btn-active');
+  }, function() {
+    //图片文字动，并根据随机数跳转到一个性格
     location.hash = '#/result1';
+    moveImg();
+  }, function() {
+    //图片文字回动，按钮恢复
+    $('.test-p').addClass('show');
+    setTimeout(function() {
+      $('.test-p').removeClass('show');
+    }, 1000);
+    $('.test-btn').removeClass('test-btn-active');
   });
+
   $('.testAgain').on('click', function() {
     localStorage.removeItem('result');
     location.hash = '#/';
   });
-}(); 
 
+
+}(); 
 });

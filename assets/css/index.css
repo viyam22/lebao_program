@@ -2,9 +2,110 @@
 .test,
 .result1,
 .result2 {
+  position: relative;
   display: none;
 }
 .show {
-  display: block;
+  display: block !important;
 }
+.top {
+  z-index: 100;
+}
+* {
+  -webkit-touch-callout: none;
+  -moz-touch-callout: none;
+  -ms-touch-callout: none;
+  touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+ }
+ html {
+   height: 100%;
+ }
+ body {
+   height: 100%;
+   margin: 0;
+ }
+.result1 {
+  height: 100%;
+}
+.test-btn {
+  font-size: 14px;
+  width: 10rem;
+  height: 3rem;
+  background-color: #54dc56;
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  color: #ccc;
+  -webkit-transition: all 3s;
+  -o-transition: all 3s;
+  -moz-transition: all 3s;
+  text-align: center;
+  line-height: 3rem;
+}
+.test-btn-active {
+  color: #fff;
+  background-color: #589a59;
+}
+.hide {
+  display: none;
+}
+@media only screen and (max-width: 767px){
+  .index-bg {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/home.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  .test-bg {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/tunnel.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  .test-p {
+    position: absolute; top: 100px;
+    text-align: center;
+    width: 100%;
+    display: none;
+    font-size: 20px;
+  }
+  .result1-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+  .result1-btn-wrap {
+    position: absolute;
+    z-index: 110;
+    top: 100px;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+  .share {
+    width: 80px;
+  }
+  .testAgain {
+    width: 80px;
 
+  }
+}
+.index-btn {
+  width: 100%;
+  display: block;
+  height: 70%;
+  border-radius: 50%;
+}
