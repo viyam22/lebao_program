@@ -27,24 +27,16 @@ var listenHashChange = function(dosome) {
   }
 }
 var moveImg = function(imgClass, imgCount, time) {
+  console.log('fuck');
   var i = 0;
-  var a = 0;
-  $(imgClass).each(function() {
-    $(this)[0].onload = function() {
-      a++;
-      console.log(a);
-      if (a === imgCount) {
-        var interval = setInterval(function() {
-          $(imgClass).eq(i).removeClass('top');
-          $(imgClass).eq(++i).addClass('top');
-          if (i === imgCount) {
-            $('.result1-btn-wrap').addClass('show');
-            clearInterval(interval);
-          }
-        }, time);
-      }      
+  var interval = setInterval(function() {
+    $(imgClass).eq(i).removeClass('top');
+    $(imgClass).eq(++i).addClass('top');
+    if (i === imgCount) {
+      $('.result1-btn-wrap').addClass('show');
+      clearInterval(interval);
     }
-  });
+  }, time);
 
   // $(imgClass)[0].onload = function() {
   //   a++;
@@ -63,6 +55,10 @@ var moveImg = function(imgClass, imgCount, time) {
   
 }
 
+var animateNode = function(nodeClass) {
+  $(nodeClass).animate();
+}
+
 var removeShow = function() {
   $('.index').removeClass('show');
   $('.test').removeClass('show');
@@ -73,6 +69,7 @@ var removeShow = function() {
 var changePage = function() {
   removeShow();
   switch(location.hash) {
+    case '':
     case '#/':
       $('.index').addClass('show');
       break;
@@ -97,6 +94,8 @@ var checkIsTest = function() {
   var i = localStorage.getItem('result');
   if (i) {
     location.hash = '#/result' + i;
+  } else {
+    location.hash = '#/';
   }
 }
 var setResult = function() {
@@ -124,7 +123,7 @@ var setResult = function() {
 
 
 void function() {
-  location.hash = '#/';
+  changePage();
   listenHashChange(changePage);
   checkIsTest();
 
@@ -133,7 +132,6 @@ void function() {
   }, function() {
     //图片文字动，并根据随机数跳转到一个性格
     location.hash = '#/result1';
-    moveImg();
   }, function() {
     //图片文字回动，按钮恢复
     $('.test-p').addClass('show');
@@ -145,6 +143,8 @@ void function() {
 
   $('.testAgain').on('click', function() {
     localStorage.removeItem('result');
+    $('.result1-btn-wrap').removeClass('show');
+    $('.test-btn').removeClass('test-btn-active');
     location.hash = '#/';
   });
 
