@@ -27,7 +27,6 @@ var listenHashChange = function(dosome) {
   }
 }
 var moveImg = function(imgClass, imgCount, time) {
-  console.log('fuck');
   var i = 0;
   var interval = setInterval(function() {
     $(imgClass).eq(i).removeClass('top');
@@ -129,15 +128,32 @@ void function() {
 
   $('.test-btn').longPress(function() {
     $('.test-btn').addClass('test-btn-active');
+
+    var i = 1;
+    var fuck =  setInterval(function() {
+      if (i % 2 !== 0) {
+        $('.img' + i % 7).animate({top:'1000px', width: '300%', left: '50%'}, 1200, 'ease-in', function() {
+          $(this).css({top: '-100px', width: '5%', left: '20%'});
+        });
+      } else {
+        $('.img' + i % 7).animate({top:'1000px', width:'300%', right: '50%'}, 1200, 'ease-in', function() {
+          $(this).css({top: '-100px', width: '5%', right: '20%'});
+        });
+      }
+      i++;
+      if (i === 7) {
+        i = 1;
+      }
+    }, 500);  
   }, function() {
     //图片文字动，并根据随机数跳转到一个性格
     location.hash = '#/result1';
   }, function() {
-    //图片文字回动，按钮恢复
-    $('.test-p').addClass('show');
+    $('.test-p').css({'opacity': 1});
+    $('.test-img-wrap').children().removeClass('moveToBottom');
     setTimeout(function() {
-      $('.test-p').removeClass('show');
-    }, 1000);
+      $('.test-p').css({'opacity': 0});
+    }, 500);
     $('.test-btn').removeClass('test-btn-active');
   });
 
@@ -145,6 +161,8 @@ void function() {
     localStorage.removeItem('result');
     $('.result1-btn-wrap').removeClass('show');
     $('.test-btn').removeClass('test-btn-active');
+    $('.img1').removeClass('moveToTop');
+    $('.img2').removeClass('moveToTop');
     location.hash = '#/';
   });
 

@@ -75,11 +75,42 @@
     background-attachment: fixed;
     background-size: cover;
   }
+  .test-img-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .test-img-wrap > img {
+    position: absolute;
+    width: 5%;
+    top: -100px;
+  }
+  .img1,
+  .img3,
+  .img5 {
+    left: 20%;
+  }
+  .img2,
+  .img4,
+  .img6 {
+    right: 20%;
+  }
+
+/*  
+  .moveToBottom {
+    -webkit-transition: all 3.8s ease-in;
+    -o-transition: all 3.8s ease-in;
+    -moz-transition: all 3.8s ease-in;
+    transform: scale(5) translateY(2000px);
+  }*/
   .test-p {
     position: absolute; top: 100px;
     text-align: center;
     width: 100%;
-    display: none;
+    opacity: 0;
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
     font-size: 20px;
   }
   .result1-bg {
