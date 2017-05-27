@@ -26,15 +26,16 @@ var listenHashChange = function(dosome) {
     //兼容性写法之后再来 
   }
 }
-var moveImg = function() {
-  setTimeout(function() {
-      $('.result1-btn-wrap').addClass('show');
-      $('.result1-out').addClass('show');
+var moveImg = function(imgClass, imgCount, time, fn) {
+  var i = 0;
+  var interval = setInterval(function() {
+    $(imgClass).eq(i).removeClass('top');
+    $(imgClass).eq(++i).addClass('top');
+    if (i === imgCount) {
+      clearInterval(interval);
+      fn();
+    }
   }, time);
-}
-
-var animateNode = function(nodeClass) {
-  $(nodeClass).animate();
 }
 
 var removeShow = function() {
@@ -56,11 +57,14 @@ var changePage = function() {
       break;
     case '#/result1':
       $('.result1').addClass('show');
+      $('.result1-bg').addClass('show');
+      
       localStorage.setItem('result', '1');
+
       setTimeout(function() {
         $('.result1-btn-wrap').addClass('show');
         $('.result1-out').addClass('show');
-      }, 2600);
+      }, 2400);
       break;
     case '#/result2':
       $('.result2').addClass('show');
@@ -124,22 +128,22 @@ void function() {
         $('.word5').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
         setTimeout(function() {
         $('.word6').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');;
-        }, 1000);
+        }, 500);
       }
-    }, 1000);
+    }, 500);
   }, function() {
     $('.word').addClass('transition');
     //图片文字回动，
     $('.word').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
     clearInterval(animateWord);
     //出现云
-    $('.cloud').addClass('show');
-    setTimeout(function() {
+    $('.test-cloud-wrap').addClass('show');
+    moveImg('.cloud', 8, 500, function() {
       //根据随机数跳转到一个性格
+      $('.test-cloud-wrap').removeClass('show');
       location.hash = '#/result1';
-    }, 2000);
+    });
   }, function() {
-    isRun = false;
     $('.word').addClass('transition');
     $('.word').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
     clearInterval(animateWord);
@@ -149,7 +153,6 @@ void function() {
     }, 500);
     $('.test-btn').removeClass('test-btn-active');
   });
-
   $('.testAgain').on('click', function() {
     localStorage.removeItem('result');
     $('.result1-btn-wrap').removeClass('show');
@@ -157,9 +160,9 @@ void function() {
     $('.test-btn').removeClass('test-btn-active');
     $('.img1').removeClass('moveToTop');
     $('.img2').removeClass('moveToTop');
+    $('.result1-bg').removeClass('show');
+    $('.result1-out').removeClass('show');
     location.hash = '#/';
   });
-
-
 }(); 
 });
