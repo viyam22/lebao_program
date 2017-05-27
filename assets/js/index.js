@@ -26,32 +26,11 @@ var listenHashChange = function(dosome) {
     //兼容性写法之后再来 
   }
 }
-var moveImg = function(imgClass, imgCount, time) {
-  var i = 0;
-  var interval = setInterval(function() {
-    $(imgClass).eq(i).removeClass('top');
-    $(imgClass).eq(++i).addClass('top');
-    if (i === imgCount) {
+var moveImg = function() {
+  setTimeout(function() {
       $('.result1-btn-wrap').addClass('show');
-      clearInterval(interval);
-    }
+      $('.result1-out').addClass('show');
   }, time);
-
-  // $(imgClass)[0].onload = function() {
-  //   a++;
-  //   console.log(a);
-  //   if (a === imgCount) {
-  //     var interval = setInterval(function() {
-  //       $(imgClass).eq(i).removeClass('top');
-  //       $(imgClass).eq(++i).addClass('top');
-  //       if (i === imgCount) {
-  //         $('.result1-btn-wrap').addClass('show');
-  //         clearInterval(interval);
-  //       }
-  //     }, time);
-  //   }
-  // };
-  
 }
 
 var animateNode = function(nodeClass) {
@@ -78,7 +57,10 @@ var changePage = function() {
     case '#/result1':
       $('.result1').addClass('show');
       localStorage.setItem('result', '1');
-      moveImg('.result1-bg', 9, 400);
+      setTimeout(function() {
+        $('.result1-btn-wrap').addClass('show');
+        $('.result1-out').addClass('show');
+      }, 2600);
       break;
     case '#/result2':
       $('.result2').addClass('show');
@@ -87,7 +69,6 @@ var changePage = function() {
   }
 }
 
-//是否已经测试过
 var checkIsTest = function() {
   //localStorage.setItem('result', '1');  //1 2 3 4分别代表一种性格
   var i = localStorage.getItem('result');
@@ -117,40 +98,52 @@ var setResult = function() {
 //     }
 //   }
 // }
-
-
-
-
 void function() {
   changePage();
   listenHashChange(changePage);
   checkIsTest();
-
+  var animateWord;
   $('.test-btn').longPress(function() {
     $('.test-btn').addClass('test-btn-active');
-
+    $('.word').removeClass('transition');
     var i = 1;
-    var fuck =  setInterval(function() {
-      if (i % 2 !== 0) {
-        $('.img' + i % 7).animate({top:'1000px', width: '300%', left: '50%'}, 1200, 'ease-in', function() {
-          $(this).css({top: '-100px', width: '5%', left: '20%'});
-        });
+    animateWord = setInterval(function() {
+      if (i % 2 === 0) {
+        $('.word' + i).addClass('moveToBottomRight');
       } else {
-        $('.img' + i % 7).animate({top:'1000px', width:'300%', right: '50%'}, 1200, 'ease-in', function() {
-          $(this).css({top: '-100px', width: '5%', right: '20%'});
-        });
+        $('.word' + i).addClass('moveToBottomLeft');
       }
       i++;
       if (i === 7) {
         i = 1;
+        //此处之后再改好看
+        $('.word1').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+        $('.word2').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+        $('.word3').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+        $('.word4').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+        $('.word5').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+        setTimeout(function() {
+        $('.word6').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');;
+        }, 1000);
       }
-    }, 500);  
+    }, 1000);
   }, function() {
-    //图片文字动，并根据随机数跳转到一个性格
-    location.hash = '#/result1';
+    $('.word').addClass('transition');
+    //图片文字回动，
+    $('.word').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+    clearInterval(animateWord);
+    //出现云
+    $('.cloud').addClass('show');
+    setTimeout(function() {
+      //根据随机数跳转到一个性格
+      location.hash = '#/result1';
+    }, 2000);
   }, function() {
+    isRun = false;
+    $('.word').addClass('transition');
+    $('.word').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+    clearInterval(animateWord);
     $('.test-p').css({'opacity': 1});
-    $('.test-img-wrap').children().removeClass('moveToBottom');
     setTimeout(function() {
       $('.test-p').css({'opacity': 0});
     }, 500);
@@ -160,6 +153,7 @@ void function() {
   $('.testAgain').on('click', function() {
     localStorage.removeItem('result');
     $('.result1-btn-wrap').removeClass('show');
+    $('.cloud').removeClass('show');
     $('.test-btn').removeClass('test-btn-active');
     $('.img1').removeClass('moveToTop');
     $('.img2').removeClass('moveToTop');
