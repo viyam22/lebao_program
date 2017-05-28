@@ -94,24 +94,36 @@
     position: absolute;
     width: 100%;
   }
+  .result1 {
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  .show-result1 {
+    background-image: url(../images/einstein/einstein.gif);
+    display: block !important;
+  }
 
   .transition {
-    -webkit-transition: all 0.8s ease-in;
-    -o-transition: all 0.8s ease-in;
-    -moz-transition: all 0.8s ease-in;
+    -webkit-transition: all 4s ease-in;
+    -o-transition: all 4s ease-in;
+    -moz-transition: all 4s ease-in;
   }
   
   .moveToBottomLeft {
-    -webkit-transition: all 0.8s ease-in;
-    -o-transition: all 0.8s ease-in;
-    -moz-transition: all 0.8s ease-in;
+    -webkit-transition: all 4s ease-in;
+    -o-transition: all 4s ease-in;
+    -moz-transition: all 4s ease-in;
     /*transform: scale(4) translateY(300px) translateX(-100px);*/
     transform: scale(5) translateY(1000px) translateX(-100px);
   }
   .moveToBottomRight {
-    -webkit-transition: all 0.8s ease-in;
-    -o-transition: all 0.8s ease-in;
-    -moz-transition: all 0.8s ease-in;
+    -webkit-transition: all 4s ease-in;
+    -o-transition: all 4s ease-in;
+    -moz-transition: all 4s ease-in;
     transform: scale(5) translateY(1000px) translateX(100px);
   }
   .test-p {
@@ -125,6 +137,7 @@
     font-size: 20px;
   }
   .result1-bg,
+  .result1-cloud,
   .result1-out {
     width: 100%;
     height: 100%;
@@ -137,9 +150,10 @@
   .result1-btn-wrap {
     position: absolute;
     z-index: 110;
-    top: 100px;
+    bottom: 6px;
+    right: 8px;
     width: 100%;
-    text-align: center;
+    text-align: right;
     display: none;
   }
   .share {

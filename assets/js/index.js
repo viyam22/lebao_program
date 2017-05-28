@@ -57,14 +57,16 @@ var changePage = function() {
       break;
     case '#/result1':
       $('.result1').addClass('show');
-      $('.result1-bg').addClass('show');
-      
+      var result1 = "<img src='./assets/images/einstein/einstein.gif' class='result1-bg show'>"; 
+      $(".result1").append(result1);  
+      // $('.result1').css({backgroundImage: 'url(./assets/images/einstein/einstein.gif)'});
       localStorage.setItem('result', '1');
 
       setTimeout(function() {
+        $('.result1-bg').remove();
         $('.result1-btn-wrap').addClass('show');
         $('.result1-out').addClass('show');
-      }, 2400);
+      }, 4200);
       break;
     case '#/result2':
       $('.result2').addClass('show');
@@ -113,23 +115,26 @@ void function() {
     var i = 1;
     animateWord = setInterval(function() {
       if (i % 2 === 0) {
-        $('.word' + i).addClass('moveToBottomRight');
+        $('.word' + ((i - 4) % 7)).removeClass('moveToBottomRight');
+        $('.word' + i % 7).addClass('moveToBottomRight');
       } else {
-        $('.word' + i).addClass('moveToBottomLeft');
+        $('.word' + ((i - 4) % 7)).removeClass('moveToBottomLeft');
+        $('.word' + i % 7).addClass('moveToBottomLeft');
       }
       i++;
-      if (i === 7) {
-        i = 1;
-        //此处之后再改好看
-        $('.word1').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
-        $('.word2').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
-        $('.word3').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
-        $('.word4').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
-        $('.word5').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
-        setTimeout(function() {
-        $('.word6').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');;
-        }, 500);
-      }
+      // if (i === 7) {
+      //   i = 1;
+      //   //此处之后再改好看
+      //   $('.word1').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+      //   $('.word2').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+      //   $('.word3').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+      //   $('.word4').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+        
+      //   setTimeout(function() {
+      //   $('.word5').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
+      //   $('.word6').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');;
+      //   }, 500);
+      // }
     }, 500);
   }, function() {
     $('.word').addClass('transition');
@@ -160,7 +165,8 @@ void function() {
     $('.test-btn').removeClass('test-btn-active');
     $('.img1').removeClass('moveToTop');
     $('.img2').removeClass('moveToTop');
-    $('.result1-bg').removeClass('show');
+    // $('.result1-bg').removeClass('show');
+    $('.result1').removeClass('show-result1');
     $('.result1-out').removeClass('show');
     location.hash = '#/';
   });
