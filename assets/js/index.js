@@ -26,17 +26,40 @@ var listenHashChange = function(dosome) {
     //兼容性写法之后再来 
   }
 }
-var moveImg = function(imgClass, imgCount, time, fn) {
-  var i = 0;
-  var interval = setInterval(function() {
-    $(imgClass).eq(i).removeClass('top');
-    $(imgClass).eq(++i).addClass('top');
-    if (i === imgCount) {
-      clearInterval(interval);
-      fn();
+
+var preload = function(callback) {
+  var imgSrc = [
+    'https://forprogram.github.io/assets/images/home.png', 
+    'https://forprogram.github.io/assets/images/einstein.png',
+    'https://forprogram.github.io/assets/images/home-logo.png',
+    'https://forprogram.github.io/assets/images/tunnel.png',
+    'https://forprogram.github.io/assets/images/cloud.png',
+    'https://forprogram.github.io/assets/images/word/1.png',
+    'https://forprogram.github.io/assets/images/word/2.png',
+    'https://forprogram.github.io/assets/images/word/3.png',
+    'https://forprogram.github.io/assets/images/word/4.png',
+    'https://forprogram.github.io/assets/images/word/5.png',    
+    'https://forprogram.github.io/assets/images/word/6.png',
+    'https://forprogram.github.io/assets/images/result-share.png',
+    'https://forprogram.github.io/assets/images/result-test-again.png'
+  ];
+  var loaded = 0;
+  var toload = imgSrc.length
+  for (var i = 0; i < toload; i++) {
+    var img = new Image();
+
+    img.onload = function() {
+      loaded ++;
+      var percent = parseInt(loaded / toload * 100);
+      $('.loading-text').text(percent + '%');
+      if (percent === 100) {
+        callback();
+      }
     }
-  }, time);
-}
+    img.src = imgSrc[i];
+  }    
+};
+
 
 var removeShow = function() {
   $('.index').removeClass('show');
@@ -51,26 +74,14 @@ var changePage = function() {
     case '':
     case '#/':
       $('.index').addClass('show');
+      setResult(); //跳到首页就随机结果，并设置想要img的src
       break;
     case '#/test': 
       $('.test').addClass('show');
       break;
-    case '#/result1':
-      $('.result1').addClass('show');
-      var result1 = "<img src='./assets/images/einstein/einstein.gif' class='result1-bg show'>"; 
-      $(".result1").append(result1);  
-      // $('.result1').css({backgroundImage: 'url(./assets/images/einstein/einstein.gif)'});
+    case '#/result':
       localStorage.setItem('result', '1');
-
-      setTimeout(function() {
-        $('.result1-bg').remove();
-        $('.result1-btn-wrap').addClass('show');
-        $('.result1-out').addClass('show');
-      }, 4200);
-      break;
-    case '#/result2':
-      $('.result2').addClass('show');
-      localStorage.setItem('result', '2');
+      $('.result').addClass('show');
       break;
   }
 }
@@ -79,35 +90,34 @@ var checkIsTest = function() {
   //localStorage.setItem('result', '1');  //1 2 3 4分别代表一种性格
   var i = localStorage.getItem('result');
   if (i) {
-    location.hash = '#/result' + i;
+    $()
+    location.hash = '#/result';
   } else {
     location.hash = '#/';
   }
 }
 var setResult = function() {
   var result = parseInt(Math.random()*4);
-  return result;
+  //根据random结果设置class
+  //假装是1
+  $('.result').addClass('result1');
 }
-// var moveImg = function(father, imageName, count) {
-//   var str = '';
-//   for (var i = 0; i < count; i++) {
-//     str += '<img class="" href="./assets/images/">'+ imageName + i +'</img>';
-//   }
-//   $(father).html(str);
-//   $(imageName)[0].onload = function() {
-//     count--;
-//     if (count === 0) {
-//       //图片加载完成，开始动画
-//       setInterval(function() {
 
-//       }, 300);
-//     }
-//   }
-// }
 void function() {
   changePage();
-  listenHashChange(changePage);
-  checkIsTest();
+  listenHashChange(changePage);//初始化就监听hash变化
+  checkIsTest();//检查是否已经测试过，测试过就跳到相应result页面，没有就跳到#/页面
+  preload(function() {
+    if (location.hash === '#/result') {
+      $('.result').addClass('show result1 moveResult1');
+      setTimeout(function() {
+        $('.result-btn-wrap').addClass('show');
+      }, 5000);
+    }
+    $('.loading').addClass('hide');
+
+  });
+
   var animateWord;
   $('.test-btn').longPress(function() {
     $('.test-btn').addClass('test-btn-active');
@@ -122,19 +132,6 @@ void function() {
         $('.word' + i % 7).addClass('moveToBottomLeft');
       }
       i++;
-      // if (i === 7) {
-      //   i = 1;
-      //   //此处之后再改好看
-      //   $('.word1').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
-      //   $('.word2').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
-      //   $('.word3').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
-      //   $('.word4').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
-        
-      //   setTimeout(function() {
-      //   $('.word5').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
-      //   $('.word6').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');;
-      //   }, 500);
-      // }
     }, 500);
   }, function() {
     $('.word').addClass('transition');
@@ -142,12 +139,15 @@ void function() {
     $('.word').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
     clearInterval(animateWord);
     //出现云
-    $('.test-cloud-wrap').addClass('show');
-    moveImg('.cloud', 8, 500, function() {
-      //根据随机数跳转到一个性格
-      $('.test-cloud-wrap').removeClass('show');
-      location.hash = '#/result1';
-    });
+    $('.test-cloud').addClass('show moveCloud');
+    //跳转到结果页面
+    setTimeout(function() {
+      location.hash = '#/result';
+      $('.result').addClass('show result1 moveResult1');
+      setTimeout(function() {
+        $('.result-btn-wrap').addClass('show');
+      }, 5000);
+    }, 4000);
   }, function() {
     $('.word').addClass('transition');
     $('.word').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
@@ -160,14 +160,10 @@ void function() {
   });
   $('.testAgain').on('click', function() {
     localStorage.removeItem('result');
-    $('.result1-btn-wrap').removeClass('show');
-    $('.cloud').removeClass('show');
+    $('.result-btn-wrap').removeClass('show');
+    $('.test-cloud').removeClass('show moveCloud');
+    $('.result').removeClass('show result1 moveResult1');
     $('.test-btn').removeClass('test-btn-active');
-    $('.img1').removeClass('moveToTop');
-    $('.img2').removeClass('moveToTop');
-    // $('.result1-bg').removeClass('show');
-    $('.result1').removeClass('show-result1');
-    $('.result1-out').removeClass('show');
     location.hash = '#/';
   });
 }(); 
