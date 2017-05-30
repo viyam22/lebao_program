@@ -1,4 +1,6 @@
 $(function() {
+  var result;
+  var RESULT = ['0', '1', '2', '3', '4'];
 $.fn.longPress = function(fn0, fn1, fn2) {
   var oldTime, newTime, costTime;
   this.on('touchstart', function(event) {
@@ -31,6 +33,10 @@ var preload = function(callback) {
   var imgSrc = [
     'https://forprogram.github.io/assets/images/home.png', 
     'https://forprogram.github.io/assets/images/einstein.png',
+    './assets/images/archimedes.png',
+    './assets/images/beethoven.png',
+    './assets/images/picasso.png',
+    './assets/images/tolstoy.png',
     'https://forprogram.github.io/assets/images/home-logo.png',
     'https://forprogram.github.io/assets/images/tunnel.png',
     'https://forprogram.github.io/assets/images/cloud.png',
@@ -64,30 +70,36 @@ var preload = function(callback) {
 var removeShow = function() {
   $('.index').removeClass('show');
   $('.test').removeClass('show');
+  $('.result0').removeClass('show');
   $('.result1').removeClass('show');
   $('.result2').removeClass('show');
+  $('.result3').removeClass('show');
+  $('.result4').removeClass('show');
 }
 
 var changePage = function() {
   removeShow();
   switch(location.hash) {
     case '':
-    case '#/':
-      $('.index').addClass('show');
-      setResult(); //跳到首页就随机结果，并设置想要img的src
-      break;
     case '#/test': 
       $('.test').addClass('show');
       break;
     case '#/result':
-      localStorage.setItem('result', '1');
       $('.result').addClass('show');
+      break;
+    case '#/':
+      $('.index').addClass('show');
+      setResult(); //跳到首页就随机结果，并设置想要img的src
       break;
   }
 }
 
+var stringToArr = function(storageItem) {
+  var arr = storageItem.split(',');
+  return arr;
+}
+
 var checkIsTest = function() {
-  //localStorage.setItem('result', '1');  //1 2 3 4分别代表一种性格
   var i = localStorage.getItem('result');
   if (i) {
     $()
@@ -97,10 +109,12 @@ var checkIsTest = function() {
   }
 }
 var setResult = function() {
-  var result = parseInt(Math.random()*4);
-  //根据random结果设置class
-  //假装是1
-  $('.result').addClass('result1');
+  var storageArr = localStorage.getItem('result') ? RESULT.concat(stringToArr(localStorage.getItem('result'))) : RESULT;
+  var randomIndex = storageArr[Math.floor(Math.random() * storageArr.length)];
+  result = storageArr[randomIndex];
+  var storageResult = localStorage.getItem('result') ? stringToArr(localStorage.getItem('result')).concat([randomIndex]) : [randomIndex];
+  localStorage.setItem('result', storageResult);
+  $('.result').addClass('result' + result);
 }
 
 void function() {
@@ -109,7 +123,8 @@ void function() {
   checkIsTest();//检查是否已经测试过，测试过就跳到相应result页面，没有就跳到#/页面
   preload(function() {
     if (location.hash === '#/result') {
-      $('.result').addClass('show result1 moveResult1');
+      var result = stringToArr(localStorage.getItem('result')).pop();
+      $('.result').addClass('show result' + result + ' moveResult' + result);
       setTimeout(function() {
         $('.result-btn-wrap').addClass('show');
       }, 5000);
@@ -143,7 +158,7 @@ void function() {
     //跳转到结果页面
     setTimeout(function() {
       location.hash = '#/result';
-      $('.result').addClass('show result1 moveResult1');
+      $('.result').addClass('show result' + result + ' moveResult' + result);
       setTimeout(function() {
         $('.result-btn-wrap').addClass('show');
       }, 5000);
@@ -159,10 +174,10 @@ void function() {
     $('.test-btn').removeClass('test-btn-active');
   });
   $('.testAgain').on('click', function() {
-    localStorage.removeItem('result');
+    // localStorage.removeItem('result');
     $('.result-btn-wrap').removeClass('show');
     $('.test-cloud').removeClass('show moveCloud');
-    $('.result').removeClass('show result1 moveResult1');
+    $('.result').removeClass('show result' + result + ' moveResult' + result);
     $('.test-btn').removeClass('test-btn-active');
     location.hash = '#/';
   });

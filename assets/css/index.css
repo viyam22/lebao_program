@@ -176,28 +176,48 @@ body {
     background-position: 0 center;
     background-repeat: no-repeat;
   }
-  .result1 {
+  .result0 {
     background-image: url(../images/einstein.png);
     background-size: 2000% 100%;
+  }
+  .result1 {
+    background-image: url(../images/archimedes.png);
+    background-size: 1200% 100%;
   }
   .result2 {
-    background-image: url(../images/einstein.png);
-    background-size: 2000% 100%;
+    background-image: url(../images/beethoven.png);
+    background-size: 1600% 100%;
   }
   .result3 {
+    background-image: url(../images/picasso.png);
+    background-size: 1400% 100%;
+  }
+  .result4 {
+    background-image: url(../images/tolstoy.png);
+    background-size: 1300% 100%;
+  }
+  /*.result5 {
     background-image: url(../images/einstein.png);
     background-size: 2000% 100%;
+  }*/
+  .moveResult0 {
+    animation: run 5s steps(19);
+    animation-fill-mode: forwards;
   }
   .moveResult1 {
-    animation: run 5s steps(19);
+    animation: run 5s steps(11);
     animation-fill-mode: forwards;
   }
   .moveResult2 {
-    animation: run 5s steps(19);
+    animation: run 5s steps(15);
     animation-fill-mode: forwards;
   }
   .moveResult3 {
-    animation: run 5s steps(19);
+    animation: run 5s steps(13);
+    animation-fill-mode: forwards;
+  }
+  .moveResult4 {
+    animation: run 5s steps(12);
     animation-fill-mode: forwards;
   }
   @keyframes run {
