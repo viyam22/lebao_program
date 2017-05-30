@@ -31,23 +31,23 @@ var listenHashChange = function(dosome) {
 
 var preload = function(callback) {
   var imgSrc = [
-    'https://forprogram.github.io/assets/images/home.png', 
-    'https://forprogram.github.io/assets/images/einstein.png',
-    './assets/images/archimedes.png',
-    './assets/images/beethoven.png',
-    './assets/images/picasso.png',
-    './assets/images/tolstoy.png',
-    'https://forprogram.github.io/assets/images/home-logo.png',
-    'https://forprogram.github.io/assets/images/tunnel.png',
-    'https://forprogram.github.io/assets/images/cloud.png',
-    'https://forprogram.github.io/assets/images/word/1.png',
-    'https://forprogram.github.io/assets/images/word/2.png',
-    'https://forprogram.github.io/assets/images/word/3.png',
-    'https://forprogram.github.io/assets/images/word/4.png',
-    'https://forprogram.github.io/assets/images/word/5.png',    
-    'https://forprogram.github.io/assets/images/word/6.png',
-    'https://forprogram.github.io/assets/images/result-share.png',
-    'https://forprogram.github.io/assets/images/result-test-again.png'
+    'http://yefun.top/assets/images/home.png', 
+    'http://yefun.top/assets/images/einstein.png',
+    'http://yefun.top/assets/images/archimedes.png',
+    'http://yefun.top/assets/images/beethoven.png',
+    'http://yefun.top/assets/images/picasso.png',
+    'http://yefun.top/assets/images/tolstoy.png',
+    'http://yefun.top/assets/images/home-logo.png',
+    'http://yefun.top/assets/images/tunnel.png',
+    'http://yefun.top/assets/images/cloud.png',
+    'http://yefun.top/assets/images/word/1.png',
+    'http://yefun.top/assets/images/word/2.png',
+    'http://yefun.top/assets/images/word/3.png',
+    'http://yefun.top/assets/images/word/4.png',
+    'http://yefun.top/assets/images/word/5.png',    
+    'http://yefun.top/assets/images/word/6.png',
+    'http://yefun.top/assets/images/result-share.png',
+    'http://yefun.top/assets/images/result-test-again.png'
   ];
   var loaded = 0;
   var toload = imgSrc.length
