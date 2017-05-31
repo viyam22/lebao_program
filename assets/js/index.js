@@ -3,6 +3,7 @@ $(function() {
     ? localStorage.getItem('result').split(',').pop()
     : '-1';
   var RESULT = ['0', '1', '2', '3', '4'];
+  var resultHash;
 $.fn.longPress = function(fn0, fn1, fn2) {
   var oldTime, newTime, costTime;
   this.on('touchstart', function(event) {
@@ -81,7 +82,8 @@ var removeShow = function() {
 
 var changePage = function() {
   removeShow();
-  switch(location.hash) {
+  var hash = !!~location.hash.indexOf('#/result') ? '#/result' : location.hash;
+  switch(hash) {
     case '#/index':
       $('.index').addClass('show');
       setResult();
@@ -93,6 +95,7 @@ var changePage = function() {
       $('.test').addClass('show');
       break;
     case '#/result':
+      result = result === -1 ? location.hash.split('#/result')[1] : result;
       $('.result').addClass('show');
       preload(function() {
         showResultPage();
@@ -108,12 +111,10 @@ var stringToArr = function(storageItem) {
   return arr;
 }
 var setResult = function() {
-  console.log("------随机结果");
   //将原有性格数组和缓存数组结合
   var storageArr = localStorage.getItem('result') ? RESULT.concat(stringToArr(localStorage.getItem('result'))) : RESULT;
   //随机数组下标
   var randomIndex = storageArr[Math.floor(Math.random() * storageArr.length)];
-  console.log(storageArr,randomIndex);
   result = storageArr[randomIndex];
   $('.result').addClass('result' + randomIndex);
 }
@@ -121,12 +122,14 @@ var setResult = function() {
 
 var showResultPage = function() {
   $('.result').addClass('show result' + result + ' moveResult' + result);
+
   setTimeout(function() {
     $('.result-btn-wrap').addClass('show');
   }, 5000);
 } 
 void function() {
   listenHashChange(changePage);
+  result = result === -1 ? location.hash.split('#/result')[1] : result;
   if (result === '-1') {
     //说明未测试过
     if (location.hash === '#/index') {
@@ -136,11 +139,12 @@ void function() {
     }
   } else {
     //测试过
-    if (location.hash === '#/result') {
+    if (!!~location.hash.indexOf('#/result')) {
       changePage();
-    } else {
-      location.hash = '#/result';
-    }
+    } 
+    // else {
+    //   location.hash = '#/result';
+    // }
   }
   var animateWord;
   $('.test-btn').longPress(function() {
@@ -167,11 +171,10 @@ void function() {
     }, 2000);
     //缓存随机结果
     var storageResult = localStorage.getItem('result') ? stringToArr(localStorage.getItem('result')).concat([result]) : [result];
-    console.log('缓存', storageResult);
     localStorage.setItem('result', storageResult);
     //跳转到结果页面
     setTimeout(function() {
-      location.hash = '#/result';
+      location.hash = '#/result' + result;
       showResultPage();
     }, 4000);
   }, function() {
