@@ -49,7 +49,8 @@ var preload = function(callback) {
     'http://yefun.top/assets/images/result-test-again.png'
   ];
   if (result !== '-1') {
-    imgSrc.push('http://yefun.top/assets/images/result'+ result +'.png');  
+    // imgSrc.push('http://yefun.top/assets/images/result'+ result +'.png');
+    imgSrc.push('./assets/images/result'+ result +'.png');    
   }
   var loaded = 0;
   var toload = imgSrc.length
@@ -102,16 +103,19 @@ var changePage = function() {
 }
 
 var stringToArr = function(storageItem) {
+  //将缓存字符串改成数组
   var arr = storageItem.split(',');
   return arr;
 }
 var setResult = function() {
+  console.log("------随机结果");
+  //将原有性格数组和缓存数组结合
   var storageArr = localStorage.getItem('result') ? RESULT.concat(stringToArr(localStorage.getItem('result'))) : RESULT;
+  //随机数组下标
   var randomIndex = storageArr[Math.floor(Math.random() * storageArr.length)];
+  console.log(storageArr,randomIndex);
   result = storageArr[randomIndex];
-  var storageResult = localStorage.getItem('result') ? stringToArr(localStorage.getItem('result')).concat([randomIndex]) : [randomIndex];
-  localStorage.setItem('result', storageResult);
-  $('.result').addClass('result' + result);
+  $('.result').addClass('result' + randomIndex);
 }
 
 
@@ -140,7 +144,6 @@ void function() {
   }
   var animateWord;
   $('.test-btn').longPress(function() {
-    $('.test-btn').addClass('test-btn-active');
     $('.word').removeClass('transition');
     var i = 0;
     animateWord = setInterval(function() {
@@ -159,7 +162,13 @@ void function() {
     $('.word').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
     clearInterval(animateWord);
     //出现云
-    $('.test-cloud').addClass('show moveCloud');
+    setTimeout(function() {
+      $('.test-cloud').addClass('show moveCloud');
+    }, 2000);
+    //缓存随机结果
+    var storageResult = localStorage.getItem('result') ? stringToArr(localStorage.getItem('result')).concat([result]) : [result];
+    console.log('缓存', storageResult);
+    localStorage.setItem('result', storageResult);
     //跳转到结果页面
     setTimeout(function() {
       location.hash = '#/result';
@@ -169,19 +178,35 @@ void function() {
     $('.word').addClass('transition');
     $('.word').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
     clearInterval(animateWord);
-    $('.test-p').css({'opacity': 1});
+    $('.test-tip').css({'opacity': 1});
     setTimeout(function() {
-      $('.test-p').css({'opacity': 0});
+      $('.test-tip').css({'opacity': 0});
     }, 500);
-    $('.test-btn').removeClass('test-btn-active');
   });
   $('.testAgain').on('click', function() {
     // localStorage.removeItem('result');
     $('.result-btn-wrap').removeClass('show');
     $('.test-cloud').removeClass('show moveCloud');
     $('.result').removeClass('show result' + result + ' moveResult' + result);
-    $('.test-btn').removeClass('test-btn-active');
     location.hash = '#/index';
   });
+
+  // wx.config({
+  //   debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+  //   appId: '', // 必填，公众号的唯一标识
+  //   timestamp: '', // 必填，生成签名的时间戳
+  //   nonceStr: '', // 必填，生成签名的随机串
+  //   signature: '',// 必填，签名，见附录1
+  //   jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+  // });
+
 }(); 
+
+  // var SHARE = [{
+  //   title: 'WhatYouNeed 作者列表',
+  //   imgUrl: 'http://7xi3je.com1.z0.glb.clouddn.com/image_1471951817.437828.jpg',
+  //   link: 'http://blog.whatyouneed.cc/#/page/author',
+  //   desc: 'WhatYouNeed 作者列表'
+  // }]
+
 });
