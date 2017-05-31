@@ -1,5 +1,7 @@
 $(function() {
-  var result;
+  var result = localStorage.getItem('result') 
+    ? localStorage.getItem('result').split(',').pop()
+    : '-1';
   var RESULT = ['0', '1', '2', '3', '4'];
 $.fn.longPress = function(fn0, fn1, fn2) {
   var oldTime, newTime, costTime;
@@ -30,13 +32,10 @@ var listenHashChange = function(dosome) {
 }
 
 var preload = function(callback) {
+  console.log('preload');
   var imgSrc = [
+    'http://yefun.top/assets/images/finger.png',
     'http://yefun.top/assets/images/home.png', 
-    'http://yefun.top/assets/images/einstein.png',
-    'http://yefun.top/assets/images/archimedes.png',
-    'http://yefun.top/assets/images/beethoven.png',
-    'http://yefun.top/assets/images/picasso.png',
-    'http://yefun.top/assets/images/tolstoy.png',
     'http://yefun.top/assets/images/home-logo.png',
     'http://yefun.top/assets/images/tunnel.png',
     'http://yefun.top/assets/images/cloud.png',
@@ -49,6 +48,9 @@ var preload = function(callback) {
     'http://yefun.top/assets/images/result-share.png',
     'http://yefun.top/assets/images/result-test-again.png'
   ];
+  if (result !== '-1') {
+    imgSrc.push('http://yefun.top/assets/images/result'+ result +'.png');  
+  }
   var loaded = 0;
   var toload = imgSrc.length
   for (var i = 0; i < toload; i++) {
@@ -66,7 +68,6 @@ var preload = function(callback) {
   }    
 };
 
-
 var removeShow = function() {
   $('.index').removeClass('show');
   $('.test').removeClass('show');
@@ -80,16 +81,22 @@ var removeShow = function() {
 var changePage = function() {
   removeShow();
   switch(location.hash) {
-    case '':
+    case '#/index':
+      $('.index').addClass('show');
+      setResult();
+      preload(function() {
+        $('.loading').addClass('hide');
+      });
+      break;
     case '#/test': 
       $('.test').addClass('show');
       break;
     case '#/result':
       $('.result').addClass('show');
-      break;
-    case '#/':
-      $('.index').addClass('show');
-      setResult(); //跳到首页就随机结果，并设置想要img的src
+      preload(function() {
+        showResultPage();
+        $('.loading').addClass('hide');
+      });
       break;
   }
 }
@@ -97,16 +104,6 @@ var changePage = function() {
 var stringToArr = function(storageItem) {
   var arr = storageItem.split(',');
   return arr;
-}
-
-var checkIsTest = function() {
-  var i = localStorage.getItem('result');
-  if (i) {
-    $()
-    location.hash = '#/result';
-  } else {
-    location.hash = '#/';
-  }
 }
 var setResult = function() {
   var storageArr = localStorage.getItem('result') ? RESULT.concat(stringToArr(localStorage.getItem('result'))) : RESULT;
@@ -117,22 +114,30 @@ var setResult = function() {
   $('.result').addClass('result' + result);
 }
 
+
+var showResultPage = function() {
+  $('.result').addClass('show result' + result + ' moveResult' + result);
+  setTimeout(function() {
+    $('.result-btn-wrap').addClass('show');
+  }, 5000);
+} 
 void function() {
-  changePage();
-  listenHashChange(changePage);//初始化就监听hash变化
-  checkIsTest();//检查是否已经测试过，测试过就跳到相应result页面，没有就跳到#/页面
-  preload(function() {
-    if (location.hash === '#/result') {
-      var result = stringToArr(localStorage.getItem('result')).pop();
-      $('.result').addClass('show result' + result + ' moveResult' + result);
-      setTimeout(function() {
-        $('.result-btn-wrap').addClass('show');
-      }, 5000);
+  listenHashChange(changePage);
+  if (result === '-1') {
+    //说明未测试过
+    if (location.hash === '#/index') {
+      changePage();
+    } else {
+      location.hash = '#/index';
     }
-    $('.loading').addClass('hide');
-
-  });
-
+  } else {
+    //测试过
+    if (location.hash === '#/result') {
+      changePage();
+    } else {
+      location.hash = '#/result';
+    }
+  }
   var animateWord;
   $('.test-btn').longPress(function() {
     $('.test-btn').addClass('test-btn-active');
@@ -158,10 +163,7 @@ void function() {
     //跳转到结果页面
     setTimeout(function() {
       location.hash = '#/result';
-      $('.result').addClass('show result' + result + ' moveResult' + result);
-      setTimeout(function() {
-        $('.result-btn-wrap').addClass('show');
-      }, 5000);
+      showResultPage();
     }, 4000);
   }, function() {
     $('.word').addClass('transition');
@@ -179,7 +181,7 @@ void function() {
     $('.test-cloud').removeClass('show moveCloud');
     $('.result').removeClass('show result' + result + ' moveResult' + result);
     $('.test-btn').removeClass('test-btn-active');
-    location.hash = '#/';
+    location.hash = '#/index';
   });
 }(); 
 });
