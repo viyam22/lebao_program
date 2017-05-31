@@ -168,7 +168,7 @@ void function() {
     //缓存随机结果
     var storageResult = localStorage.getItem('result') ? stringToArr(localStorage.getItem('result')).concat([result]) : [result];
     console.log('缓存', storageResult);
-    localStorage.setItem('result', storageResult);
+    localStorage.setItem('result', 0);
     //跳转到结果页面
     setTimeout(function() {
       location.hash = '#/result';

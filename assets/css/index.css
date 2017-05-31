@@ -181,7 +181,7 @@ body {
   }
   .result0 {
     background-image: url(../images/result0.jpg);
-    background-size: 100% 1100%;
+    background-size: auto 1100%;
     /*background-position: center center;*/
     /*background-repeat: no-repeat;*/
   }
@@ -227,10 +227,10 @@ body {
   }
   @keyframes run {
     0% {
-      background-position: 0 center;
+      background-position: center 0;
     }
     100% {
-      background-position: 100% center;
+      background-position: center 100%;
     }
   }
   .result-btn-wrap {
