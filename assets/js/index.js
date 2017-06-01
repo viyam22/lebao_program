@@ -56,7 +56,7 @@ var preload = function(callback) {
     imgSrc.push('http://yefun.top/assets/images/link/result_cloud'+ result +'.png');
   }
   var loaded = 0;
-  var toload = imgSrc.length
+  var toload = imgSrc.length - 1;
   for (var i = 0; i < toload; i++) {
     var img = new Image();
 
