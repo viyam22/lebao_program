@@ -125,7 +125,7 @@ var showResultPage = function() {
   setTimeout(function() {
     $('.result').removeClass('show resultCloud' + result + ' moveResultCloud');
     $('.result').addClass('show result' + result + ' moveResult' + result);
-  }, 2000);
+  }, 0.6);
   setTimeout(function() {
     $('.result-btn-wrap').addClass('show');
   }, 12000);
@@ -142,7 +142,6 @@ void function() {
       location.hash = '#/index';
     }
   } else {
-    console.log('Ceshi')
     //测试过
     // if (!!~location.hash.indexOf('#/result')) {
       changePage();
@@ -173,6 +172,7 @@ void function() {
     //出现云
     setTimeout(function() {
       $('.test-cloud').addClass('show moveCloud');
+      $('.cloud-background').addClass('show moveCloud');
     }, 2000);
     //缓存随机结果
     var storageResult = localStorage.getItem('result') ? stringToArr(localStorage.getItem('result')).concat([result]) : [result];
@@ -196,6 +196,7 @@ void function() {
     // localStorage.removeItem('result');
     $('.result-btn-wrap').removeClass('show');
     $('.test-cloud').removeClass('show moveCloud');
+    $('.cloud-background').removeClass('show moveCloud');
     $('.result').removeClass('show result' + result + ' moveResult' + result);
     location.hash = '#/index';
   });

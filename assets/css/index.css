@@ -10,7 +10,8 @@ body {
 .index,
 .test,
 .result,
-.share-tip {
+.share-tip,
+.cloud-background {
   position: relative;
   display: none;
   width: 100%;
@@ -175,13 +176,39 @@ body {
 
 
   /*result*/
+  .result-background {
+    background-image: url(../images/background-link.jpg);
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+  .cloud-background {
+    background-image: url(../images/background-link.jpg);
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
   .result {
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
   .result0 {
-    background-image: url(../images/link/result0.jpg);
+    background-image: url(../images/link/result0.png);
     background-size: auto 800%;
     /*background-position: center center;*/
     /*background-repeat: no-repeat;*/
@@ -275,7 +302,6 @@ body {
     z-index: 110;
     top: 1rem;
     left: 30%;
-    width: 100%;
     text-align: left;
     display: none;
   }
