@@ -56,7 +56,7 @@ var preload = function(callback) {
     imgSrc.push('http://yefun.top/assets/images/link/result_cloud'+ result +'.png');
   }
   var loaded = 0;
-  var toload = imgSrc.length
+  var toload = imgSrc.length - 1;
   for (var i = 0; i < toload; i++) {
     var img = new Image();
 
@@ -167,6 +167,7 @@ void function() {
       i++;
     }, 500);
   }, function() {
+    $('.test-btn').addClass('hide');
     $('.word').addClass('transition');
     //图片文字回动，
     $('.word').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
@@ -205,7 +206,9 @@ void function() {
   $('.share').on('click', function() {
     $('.share-tip').addClass('show');
   });
-
+  $('.share-tip').on('click', function() {
+    $('.share-tip').removeClass('show');
+  });
   // wx.config({
   //   debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
   //   appId: '', // 必填，公众号的唯一标识
