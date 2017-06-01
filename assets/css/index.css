@@ -234,28 +234,64 @@ body {
     background-size: auto 1500%;
   }
   .moveResult0 {
+    -webkit-animation: run 5s steps(7) 0s 2;
+    -o-animation: run 5s steps(7) 0s 2;
+    -moz-animation: run 5s steps(7) 0s 2;
     animation: run 5s steps(7) 0s 2;
     animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
   }
   .moveResult1 {
+    -webkit-animation: run 5s steps(8) 0s 2;
+    -o-animation: run 5s steps(8) 0s 2;
+    -moz-animation: run 5s steps(8) 0s 2;
     animation: run 5s steps(8) 0s 2;
     animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
   }
   .moveResult2 {
+    -webkit-animation: run 5s steps(12) 0s 2;
+    -o-animation: run 5s steps(12) 0s 2;
+    -moz-animation: run 5s steps(12) 0s 2;
     animation: run 5s steps(12) 0s 2;
     animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
   }
   .moveResult3 {
+    -webkit-animation: run 5s steps(10) 0s 2;
+    -o-animation: run 5s steps(10) 0s 2;
+    -moz-animation: run 5s steps(10) 0s 2;
     animation: run 5s steps(10) 0s 2;
     animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
   }
   .moveResult4 {
+    -webkit-animation: run 5s steps(9) 0s 2;
+    -o-animation: run 5s steps(9) 0s 2;
+    -moz-animation: run 5s steps(9) 0s 2;
     animation: run 5s steps(9) 0s 2;
     animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
   }
   .moveResult5 {
+    -webkit-animation: run 5s steps(14) 0s 2;
+    -o-animation: run 5s steps(14) 0s 2;
+    -moz-animation: run 5s steps(14) 0s 2;
     animation: run 5s steps(14) 0s 2;
     animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
   }
   .resultCloud0 {
     background-image: url(../images/link/result_cloud0.png);
@@ -286,8 +322,14 @@ body {
     background-size: auto 300%;
   }
   .moveResultCloud {
+    -webkit-animation: run 5s steps(2) 0s 2;
+    -o-animation: run 5s steps(2) 0s 2;
+    -moz-animation: run 5s steps(2) 0s 2;
     animation: run 1s steps(2);
     animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
   }
   @keyframes run {
     0% {

@@ -33,7 +33,7 @@ var listenHashChange = function(dosome) {
 }
 
 var preload = function(callback) {
-  console.log('preload');
+  $('.loading').removeClass('hide');
   var imgSrc = [
     'http://yefun.top/assets/images/finger.png',
     'http://yefun.top/assets/images/home.png', 
@@ -47,11 +47,13 @@ var preload = function(callback) {
     'http://yefun.top/assets/images/word/5.png',    
     'http://yefun.top/assets/images/word/6.png',
     'http://yefun.top/assets/images/result-share.png',
-    'http://yefun.top/assets/images/result-test-again.png'
+    'http://yefun.top/assets/images/link/transition_v.png',
+    'http://yefun.top/assets/images/result-test-again.png',
+    'http://yefun.top/assets/images/longPress.png'
   ];
   if (result !== '-1') {
-    // imgSrc.push('http://yefun.top/assets/images/result'+ result +'.png');
-    imgSrc.push('./assets/images/link/result'+ result +'.png');    
+    imgSrc.push('http://yefun.top/assets/images/link/result'+ result +'.png');
+    imgSrc.push('http://yefun.top/assets/images/link/result_cloud'+ result +'.png');
   }
   var loaded = 0;
   var toload = imgSrc.length
