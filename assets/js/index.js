@@ -35,25 +35,25 @@ var listenHashChange = function(dosome) {
 var preload = function(callback) {
   $('.loading').removeClass('hide');
   var imgSrc = [
-    'http://yefun.top/assets/images/finger.png',
-    'http://yefun.top/assets/images/home.png', 
-    'http://yefun.top/assets/images/home-logo.png',
-    'http://yefun.top/assets/images/tunnel.png',
-    'http://yefun.top/assets/images/cloud.png',
-    'http://yefun.top/assets/images/word/1.png',
-    'http://yefun.top/assets/images/word/2.png',
-    'http://yefun.top/assets/images/word/3.png',
-    'http://yefun.top/assets/images/word/4.png',
-    'http://yefun.top/assets/images/word/5.png',    
-    'http://yefun.top/assets/images/word/6.png',
-    'http://yefun.top/assets/images/result-share.png',
-    'http://yefun.top/assets/images/link/transition_v.png',
-    'http://yefun.top/assets/images/result-test-again.png',
-    'http://yefun.top/assets/images/longPress.png'
+    'http://oqprzqkcx.bkt.clouddn.com/finger.png',
+    'http://oqprzqkcx.bkt.clouddn.com/home.png', 
+    'http://oqprzqkcx.bkt.clouddn.com/home-logo.png',
+    'http://oqprzqkcx.bkt.clouddn.com/tunnel.png',
+    'http://oqprzqkcx.bkt.clouddn.com/cloud.png',
+    'http://oqprzqkcx.bkt.clouddn.com/word/1.png',
+    'http://oqprzqkcx.bkt.clouddn.com/word/2.png',
+    'http://oqprzqkcx.bkt.clouddn.com/word/3.png',
+    'http://oqprzqkcx.bkt.clouddn.com/word/4.png',
+    'http://oqprzqkcx.bkt.clouddn.com/word/5.png',    
+    'http://oqprzqkcx.bkt.clouddn.com/word/6.png',
+    'http://oqprzqkcx.bkt.clouddn.com/result-share.png',
+    'http://oqprzqkcx.bkt.clouddn.com/link/transition_v.png',
+    'http://oqprzqkcx.bkt.clouddn.com/result-test-again.png',
+    'http://oqprzqkcx.bkt.clouddn.com/longPress.png'
   ];
   if (result !== '-1') {
-    imgSrc.push('http://yefun.top/assets/images/link/result'+ result +'.png');
-    imgSrc.push('http://yefun.top/assets/images/link/result_cloud'+ result +'.png');
+    imgSrc.push('http://oqprzqkcx.bkt.clouddn.com/link/result'+ result +'.png');
+    imgSrc.push('http://oqprzqkcx.bkt.clouddn.com/link/result_cloud'+ result +'.png');
   }
   var loaded = 0;
   var toload = imgSrc.length - 1;
