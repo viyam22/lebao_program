@@ -127,10 +127,14 @@ var showResultPage = function() {
   setTimeout(function() {
     $('.result').removeClass('show resultCloud' + result + ' moveResultCloud');
     $('.result').addClass('show result' + result + ' moveResult' + result);
-  }, 0.6);
+  }, 2000);
+  setTimeout(function() {
+    $('.result').removeClass('show result' + result + ' moveResult' + result);
+    $('.result').addClass('show result' + result + ' moveResultFaster' + result);
+  }, 4800);
   setTimeout(function() {
     $('.result-btn-wrap').addClass('show');
-  }, 12000);
+  }, 6000);
 } 
 void function() {
   console.log('result', result)
@@ -176,7 +180,7 @@ void function() {
     setTimeout(function() {
       $('.test-cloud').addClass('show moveCloud');
       $('.cloud-background').addClass('show moveCloud');
-    }, 2000);
+    }, 3000);
     //缓存随机结果
     var storageResult = localStorage.getItem('result') ? stringToArr(localStorage.getItem('result')).concat([result]) : [result];
     // console.log('缓存', storageResult);
@@ -201,7 +205,7 @@ void function() {
     $('.test-btn').removeClass('hide');
     $('.test-cloud').removeClass('show moveCloud');
     $('.cloud-background').removeClass('show moveCloud');
-    $('.result').removeClass('show result' + result + ' moveResult' + result);
+    $('.result').removeClass('show result' + result + ' moveResultFaster' + result);
     location.hash = '#/index';
   });
   $('.share').on('click', function() {
@@ -242,8 +246,6 @@ void function() {
         });
       });
       wx.error(res => console.log(res.errMsg));
-
-
     },
     error: function(err) {
       console.log(err);
@@ -251,12 +253,6 @@ void function() {
   });
 }(); 
 
-  // var SHARE = [{
-  //   title: 'WhatYouNeed 作者列表',
-  //   imgUrl: 'http://7xi3je.com1.z0.glb.clouddn.com/image_1471951817.437828.jpg',
-  //   link: 'http://blog.whatyouneed.cc/#/page/author',
-  //   desc: 'WhatYouNeed 作者列表'
-  // }]
 
 });
 
