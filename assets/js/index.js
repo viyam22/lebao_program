@@ -127,10 +127,14 @@ var showResultPage = function() {
   setTimeout(function() {
     $('.result').removeClass('show resultCloud' + result + ' moveResultCloud');
     $('.result').addClass('show result' + result + ' moveResult' + result);
-  }, 0.6);
+  }, 2000);
+  setTimeout(function() {
+    $('.result').removeClass('show result' + result + ' moveResult' + result);
+    $('.result').addClass('show result' + result + ' moveResultFaster' + result);
+  }, 4800);
   setTimeout(function() {
     $('.result-btn-wrap').addClass('show');
-  }, 12000);
+  }, 6000);
 } 
 void function() {
   console.log('result', result)
@@ -175,7 +179,7 @@ void function() {
     setTimeout(function() {
       $('.test-cloud').addClass('show moveCloud');
       $('.cloud-background').addClass('show moveCloud');
-    }, 2000);
+    }, 3000);
     //缓存随机结果
     var storageResult = localStorage.getItem('result') ? stringToArr(localStorage.getItem('result')).concat([result]) : [result];
     // console.log('缓存', storageResult);
@@ -199,11 +203,14 @@ void function() {
     $('.result-btn-wrap').removeClass('show');
     $('.test-cloud').removeClass('show moveCloud');
     $('.cloud-background').removeClass('show moveCloud');
-    $('.result').removeClass('show result' + result + ' moveResult' + result);
+    $('.result').removeClass('show result' + result + ' moveResultFaster' + result);
     location.hash = '#/index';
   });
   $('.share').on('click', function() {
     $('.share-tip').addClass('show');
+  });
+  $('.share-tip').on('click', function() {
+    $('.share-tip').removeClass('show');
   });
 
   // wx.config({

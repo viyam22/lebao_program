@@ -231,63 +231,123 @@ body {
   }
   .result5 {
     background-image: url(../images/link/result5.png);
-    background-size: auto 1500%;
+    background-size: auto 1400%;
   }
   .moveResult0 {
-    -webkit-animation: run-result 5s steps(7) 0s 2;
-    -o-animation: run-result 5s steps(7) 0s 2;
-    -moz-animation: run-result 5s steps(7) 0s 2;
-    animation: run-result 5s steps(7) 0s 2;
+    -webkit-animation: run-result 2.8s steps(7) 0s 1;
+    -o-animation: run-result 2.8s steps(7) 0s 1;
+    -moz-animation: run-result 2.8s steps(7) 0s 1;
+    animation: run-result 2.8s steps(7) 0s 1;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
   }
   .moveResult1 {
-    -webkit-animation: run-result 5s steps(8) 0s 2;
-    -o-animation: run-result 5s steps(8) 0s 2;
-    -moz-animation: run-result 5s steps(8) 0s 2;
-    animation: run-result 5s steps(8) 0s 2;
+    -webkit-animation: run-result 2.8s steps(8) 0s 1;
+    -o-animation: run-result 2.8s steps(8) 0s 1;
+    -moz-animation: run-result 2.8s steps(8) 0s 1;
+    animation: run-result 2.8s steps(8) 0s 1;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
   }
   .moveResult2 {
-    -webkit-animation: run-result 5s steps(12) 0s 2;
-    -o-animation: run-result 5s steps(12) 0s 2;
-    -moz-animation: run-result 5s steps(12) 0s 2;
-    animation: run-result 5s steps(12) 0s 2;
+    -webkit-animation: run-result 2.8s steps(12) 0s 1;
+    -o-animation: run-result 2.8s steps(12) 0s 1;
+    -moz-animation: run-result 2.8s steps(12) 0s 1;
+    animation: run-result 2.8s steps(12) 0s 1;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
   }
   .moveResult3 {
-    -webkit-animation: run-result 5s steps(10) 0s 2;
-    -o-animation: run-result 5s steps(10) 0s 2;
-    -moz-animation: run-result 5s steps(10) 0s 2;
-    animation: run-result 5s steps(10) 0s 2;
+    -webkit-animation: run-result 2.8s steps(10) 0s 1;
+    -o-animation: run-result 2.8s steps(10) 0s 1;
+    -moz-animation: run-result 2.8s steps(10) 0s 1;
+    animation: run-result 2.8s steps(10) 0s 1;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
   }
   .moveResult4 {
-    -webkit-animation: run-result 5s steps(9) 0s 2;
-    -o-animation: run-result 5s steps(9) 0s 2;
-    -moz-animation: run-result 5s steps(9) 0s 2;
-    animation: run-result 5s steps(9) 0s 2;
+    -webkit-animation: run-result 2.8s steps(9) 0s 1;
+    -o-animation: run-result 2.8s steps(9) 0s 1;
+    -moz-animation: run-result 2.8s steps(9) 0s 1;
+    animation: run-result 2.8s steps(9) 0s 1;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
   }
   .moveResult5 {
-    -webkit-animation: run-result 5s steps(14) 0s 2;
-    -o-animation: run-result 5s steps(14) 0s 2;
-    -moz-animation: run-result 5s steps(14) 0s 2;
-    animation: run-result 5s steps(14) 0s 2;
+    -webkit-animation: run-result 2.8s steps(13) 0s 1;
+    -o-animation: run-result 2.8s steps(13) 0s 1;
+    -moz-animation: run-result 2.8s steps(13) 0s 1;
+    animation: run-result 2.8s steps(13) 0s 1;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+  }
+  .moveResultFaster0 {
+    -webkit-animation: run-result-faster 1.2s steps(7) 0s 1;
+    -o-animation: run-result-faster 1.2s steps(7) 0s 1;
+    -moz-animation: run-result-faster 1.2s steps(7) 0s 1;
+    animation: run-result-faster 1.2s steps(7) 0s 1;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+  }
+  .moveResultFaster1 {
+    -webkit-animation: run-result-faster 1.2s steps(8) 0s 1;
+    -o-animation: run-result-faster 1.2s steps(8) 0s 1;
+    -moz-animation: run-result-faster 1.2s steps(8) 0s 1;
+    animation: run-result-faster 1.2s steps(8) 0s 1;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+  }
+  .moveResultFaster2 {
+    -webkit-animation: run-result-faster 1.2s steps(12) 0s 1;
+    -o-animation: run-result-faster 1.2s steps(12) 0s 1;
+    -moz-animation: run-result-faster 1.2s steps(12) 0s 1;
+    animation: run-result-faster 1.2s steps(12) 0s 1;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+  }
+  .moveResultFaster3 {
+    -webkit-animation: run-result-faster 1.2s steps(10) 0s 1;
+    -o-animation: run-result-faster 1.2s steps(10) 0s 1;
+    -moz-animation: run-result-faster 1.2s steps(10) 0s 1;
+    animation: run-result-faster 1.2s steps(10) 0s 1;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+  }
+  .moveResultFaster4 {
+    -webkit-animation: run-result-faster 1.2s steps(9) 0s 1;
+    -o-animation: run-result-faster 1.2s steps(9) 0s 1;
+    -moz-animation: run-result-faster 1.2s steps(9) 0s 1;
+    animation: run-result-faster 1.2s steps(9) 0s 1;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+  }
+  .moveResultFaster5 {
+    -webkit-animation: run-result-faster 1.2s steps(13) 0s 1;
+    -o-animation: run-result-faster 1.2s steps(13) 0s 1;
+    -moz-animation: run-result-faster 1.2s steps(13) 0s 1;
+    animation: run-result-faster 1.2s steps(13) 0s 1;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;
@@ -295,37 +355,33 @@ body {
   }
   .resultCloud0 {
     background-image: url(../images/link/result_cloud0.png);
-    background-size: auto 1500%;
+    background-size: auto 400%;
   }
   .resultCloud1 {
     background-image: url(../images/link/result_cloud1.png);
-    background-size: auto 300%;
+    background-size: auto 400%;
   }
   .resultCloud2 {
     background-image: url(../images/link/result_cloud2.png);
-    background-size: auto 300%;
+    background-size: auto 400%;
   }
   .resultCloud3 {
     background-image: url(../images/link/result_cloud3.png);
-    background-size: auto 300%;
+    background-size: auto 400%;
   }
   .resultCloud4 {
     background-image: url(../images/link/result_cloud4.png);
-    background-size: auto 300%;
+    background-size: auto 400%;
   }
   .resultCloud5 {
     background-image: url(../images/link/result_cloud5.png);
-    background-size: auto 300%;
-  }
-  .resultCloud6 {
-    background-image: url(../images/link/result_cloud6.png);
-    background-size: auto 300%;
+    background-size: auto 400%;
   }
   .moveResultCloud {
-    -webkit-animation: run-result-cloud 5s steps(2) 0s 2;
-    -o-animation: run-result-cloud 5s steps(2) 0s 2;
-    -moz-animation: run-result-cloud 5s steps(2) 0s 2;
-    animation: run-result-cloud 1s steps(2);
+    -webkit-animation: run-result-cloud 0.8s steps(3) 0s 2;
+    -o-animation: run-result-cloud 0.8s steps(3) 0s 2;
+    -moz-animation: run-result-cloud 0.8s steps(3) 0s 2;
+    animation: run-result-cloud 0.8s steps(3);
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;
@@ -340,6 +396,14 @@ body {
     }
   }
   @keyframes run-result {
+    0% {
+      background-position: center 0;
+    }
+    100% {
+      background-position: center 100%;
+    }
+  }
+  @keyframes run-result-faster {
     0% {
       background-position: center 0;
     }
@@ -368,6 +432,7 @@ body {
   }
   .testAgain {
     width: 7rem;
+    float: left;
   }
   .share-tip {
     width: 100%;
