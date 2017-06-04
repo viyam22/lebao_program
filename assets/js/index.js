@@ -35,28 +35,32 @@ var listenHashChange = function(dosome) {
 var preload = function(callback) {
   $('.loading').removeClass('hide');
   var imgSrc = [
-    'http://yefun.top/assets/images/finger.png',
-    'http://yefun.top/assets/images/home.png', 
-    'http://yefun.top/assets/images/home-logo.png',
-    'http://yefun.top/assets/images/tunnel.png',
-    'http://yefun.top/assets/images/cloud.png',
-    'http://yefun.top/assets/images/word/1.png',
-    'http://yefun.top/assets/images/word/2.png',
-    'http://yefun.top/assets/images/word/3.png',
-    'http://yefun.top/assets/images/word/4.png',
-    'http://yefun.top/assets/images/word/5.png',    
-    'http://yefun.top/assets/images/word/6.png',
-    'http://yefun.top/assets/images/result-share.png',
-    'http://yefun.top/assets/images/link/transition_v.png',
-    'http://yefun.top/assets/images/result-test-again.png',
-    'http://yefun.top/assets/images/longPress.png'
+    'http://oqwhnnwix.bkt.clouddn.com/finger.png',
+    'http://oqwhnnwix.bkt.clouddn.com/home.png', 
+    'http://oqwhnnwix.bkt.clouddn.com/home-logo.png',
+    'http://oqwhnnwix.bkt.clouddn.com/tunnel.png',
+    'http://oqwhnnwix.bkt.clouddn.com/cloud.png',
+    'http://oqwhnnwix.bkt.clouddn.com/word/1.png',
+    'http://oqwhnnwix.bkt.clouddn.com/word/2.png',
+    'http://oqwhnnwix.bkt.clouddn.com/word/3.png',
+    'http://oqwhnnwix.bkt.clouddn.com/word/4.png',
+    'http://oqwhnnwix.bkt.clouddn.com/word/5.png',    
+    'http://oqwhnnwix.bkt.clouddn.com/word/6.png',
+    'http://oqwhnnwix.bkt.clouddn.com/result-share.png',
+    'http://oqwhnnwix.bkt.clouddn.com/link/transition_v.png',
+    'http://oqwhnnwix.bkt.clouddn.com/result-test-again.png',
+    'http://oqwhnnwix.bkt.clouddn.com/longPress.png'
   ];
   if (result !== '-1') {
-    imgSrc.push('http://yefun.top/assets/images/link/result'+ result +'.png');
-    imgSrc.push('http://yefun.top/assets/images/link/result_cloud'+ result +'.png');
+    imgSrc.push('http://oqwhnnwix.bkt.clouddn.com/link/result'+ result +'.png');
+    imgSrc.push('http://oqwhnnwix.bkt.clouddn.com/link/result_cloud'+ result +'.png');
   }
   var loaded = 0;
+<<<<<<< HEAD
   var toload = imgSrc.length - 1;
+=======
+  var toload = imgSrc.length;
+>>>>>>> e07e64ecfec764822640c06d75652a56a8d0624d
   for (var i = 0; i < toload; i++) {
     var img = new Image();
 
@@ -69,7 +73,8 @@ var preload = function(callback) {
       }
     }
     img.src = imgSrc[i];
-  }    
+  }
+  console.log(imgSrc);    
 };
 
 var removeShow = function() {
@@ -171,6 +176,7 @@ void function() {
       i++;
     }, 500);
   }, function() {
+    $('.test-btn').addClass('hide');
     $('.word').addClass('transition');
     //图片文字回动，
     $('.word').removeClass('moveToBottomLeft').removeClass('moveToBottomRight');
@@ -201,6 +207,7 @@ void function() {
   $('.testAgain').on('click', function() {
     // localStorage.removeItem('result');
     $('.result-btn-wrap').removeClass('show');
+    $('.test-btn').removeClass('hide');
     $('.test-cloud').removeClass('show moveCloud');
     $('.cloud-background').removeClass('show moveCloud');
     $('.result').removeClass('show result' + result + ' moveResultFaster' + result);
@@ -212,6 +219,7 @@ void function() {
   $('.share-tip').on('click', function() {
     $('.share-tip').removeClass('show');
   });
+<<<<<<< HEAD
 
   // wx.config({
   //   debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
@@ -222,13 +230,47 @@ void function() {
   //   jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
   // });
 
+=======
+  console.log(location.href);
+  $.ajax({
+    type: 'post',
+    url: 'http://192.168.0.53:2222/getsignature',
+    data: {
+        url: location.href.split('#')[0]
+    },
+    success: function(r) {
+      r = JSON.parse(r);
+      wx.config({
+        debug: true,
+        appId: r.appId,
+        timestamp: r.timestamp,
+        nonceStr: r.nonceStr,
+        signature: r.signature,
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+      });
+      wx.ready(function(){
+        wx.onMenuShareTimeline({
+          title: '乐堡 | 吹气',
+          imgUrl: 'http://7xi3je.com1.z0.glb.clouddn.com/image_1471951817.437828.jpg',
+          link: 'http://www.isaac-wjl.com/yefun',
+          desc: 'WhatYouNeed | 的文章专栏与分类。'
+        });
+        wx.onMenuShareAppMessage({
+          title: '乐堡 | 吹气',
+          imgUrl: 'http://7xi3je.com1.z0.glb.clouddn.com/image_1471951817.437828.jpg',
+          link: 'http://www.isaac-wjl.com/yefun',
+          desc: 'WhatYouNeed | 的文章专栏与分类。'
+        });
+      });
+      wx.error(res => console.log(res.errMsg));
+    },
+    error: function(err) {
+      console.log(err);
+    }
+  });
+>>>>>>> e07e64ecfec764822640c06d75652a56a8d0624d
 }(); 
 
-  // var SHARE = [{
-  //   title: 'WhatYouNeed 作者列表',
-  //   imgUrl: 'http://7xi3je.com1.z0.glb.clouddn.com/image_1471951817.437828.jpg',
-  //   link: 'http://blog.whatyouneed.cc/#/page/author',
-  //   desc: 'WhatYouNeed 作者列表'
-  // }]
 
 });
+
