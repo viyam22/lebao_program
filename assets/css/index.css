@@ -54,7 +54,7 @@ body {
   user-select: none;
 }*/
 .test-btn {
-  background-image: url(../images/longPress.png);
+  background-image: url(http://oqwhnnwix.bkt.clouddn.com/longPress.png);
   background-size: 100%;
   font-size: 14px;
   width: 10rem;
@@ -87,7 +87,7 @@ body {
 }
 /*@media only screen and (max-width: 767px){*/
   .index {
-    background-image: url(../images/home.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/home.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -96,7 +96,7 @@ body {
   .finger {
     width: 100%;
     height: 100%;
-    background: url(../images/finger.png) no-repeat 0 0;
+    background: url(http://oqwhnnwix.bkt.clouddn.com/finger.png) no-repeat 0 0;
     background-size: 200% 100%;
     animation: fingerMove 0.5s infinite steps(1);
   }
@@ -113,7 +113,7 @@ body {
   }
   /*test*/
   .test {
-    background: url(../images/tunnel.png) no-repeat center center;
+    background: url(http://oqwhnnwix.bkt.clouddn.com/tunnel.png) no-repeat center center;
     background-size: 100% 100%;
   }
   .test-word-wrap {
@@ -134,7 +134,7 @@ body {
     height: 100%;
     display: none;
     z-index: 12;
-    background: url(../images/link/transition_v.png) no-repeat center center;
+    background: url(http://oqwhnnwix.bkt.clouddn.com/link/transition_v.png) no-repeat center center;
     background-size: auto 1900%;
   }
   .moveCloud {
@@ -162,7 +162,7 @@ body {
     transform: scale(5) translateY(1000px) translateX(200px);
   }
   .test-tip {
-    background: url(../images/alertTip.png) no-repeat center center;
+    background: url(http://oqwhnnwix.bkt.clouddn.com/alertTip.png) no-repeat center center;
     position: absolute; 
     top: 20%;
     width: 100%;
@@ -177,7 +177,7 @@ body {
 
   /*result*/
   .result-background {
-    background-image: url(../images/background-link.jpg);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/background-link.jpg);
     background-position: 0 0;
     background-repeat: repeat;
     background-attachment: fixed;
@@ -189,7 +189,7 @@ body {
     z-index: -1;
   }
   .cloud-background {
-    background-image: url(../images/background-link.jpg);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/background-link.jpg);
     background-position: 0 0;
     background-repeat: repeat;
     background-attachment: fixed;
@@ -208,29 +208,29 @@ body {
     height: 100%;
   }
   .result0 {
-    background-image: url(../images/link/result0.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result0.png);
     background-size: auto 800%;
     /*background-position: center center;*/
     /*background-repeat: no-repeat;*/
   }
   .result1 {
-    background-image: url(../images/link/result1.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result1.png);
     background-size: auto 900%;
   }
   .result2 {
-    background-image: url(../images/link/result2.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result2.png);
     background-size: auto 1300%;
   }
   .result3 {
-    background-image: url(../images/link/result3.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result3.png);
     background-size: auto 1100%;
   }
   .result4 {
-    background-image: url(../images/link/result4.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result4.png);
     background-size: auto 1000%;
   }
   .result5 {
-    background-image: url(../images/link/result5.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result5.png);
     background-size: auto 1400%;
   }
   .moveResult0 {
@@ -354,34 +354,34 @@ body {
     -moz-animation-fill-mode: forwards;
   }
   .resultCloud0 {
-    background-image: url(../images/link/result_cloud0.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result_cloud0.png);
     background-size: auto 400%;
   }
   .resultCloud1 {
-    background-image: url(../images/link/result_cloud1.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result_cloud1.png);
     background-size: auto 400%;
   }
   .resultCloud2 {
-    background-image: url(../images/link/result_cloud2.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result_cloud2.png);
     background-size: auto 400%;
   }
   .resultCloud3 {
-    background-image: url(../images/link/result_cloud3.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result_cloud3.png);
     background-size: auto 400%;
   }
   .resultCloud4 {
-    background-image: url(../images/link/result_cloud4.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result_cloud4.png);
     background-size: auto 400%;
   }
   .resultCloud5 {
-    background-image: url(../images/link/result_cloud5.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result_cloud5.png);
     background-size: auto 400%;
   }
   .moveResultCloud {
     -webkit-animation: run-result-cloud 0.8s steps(3) 0s 2;
     -o-animation: run-result-cloud 0.8s steps(3) 0s 2;
     -moz-animation: run-result-cloud 0.8s steps(3) 0s 2;
-    animation: run-result-cloud 0.8s steps(3);
+    animation: run-result-cloud 0.8s steps(3) 0s 2;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;

@@ -35,28 +35,28 @@ var listenHashChange = function(dosome) {
 var preload = function(callback) {
   $('.loading').removeClass('hide');
   var imgSrc = [
-    'http://oqprzqkcx.bkt.clouddn.com/finger.png',
-    'http://oqprzqkcx.bkt.clouddn.com/home.png', 
-    'http://oqprzqkcx.bkt.clouddn.com/home-logo.png',
-    'http://oqprzqkcx.bkt.clouddn.com/tunnel.png',
-    'http://oqprzqkcx.bkt.clouddn.com/cloud.png',
-    'http://oqprzqkcx.bkt.clouddn.com/word/1.png',
-    'http://oqprzqkcx.bkt.clouddn.com/word/2.png',
-    'http://oqprzqkcx.bkt.clouddn.com/word/3.png',
-    'http://oqprzqkcx.bkt.clouddn.com/word/4.png',
-    'http://oqprzqkcx.bkt.clouddn.com/word/5.png',    
-    'http://oqprzqkcx.bkt.clouddn.com/word/6.png',
-    'http://oqprzqkcx.bkt.clouddn.com/result-share.png',
-    'http://oqprzqkcx.bkt.clouddn.com/link/transition_v.png',
-    'http://oqprzqkcx.bkt.clouddn.com/result-test-again.png',
-    'http://oqprzqkcx.bkt.clouddn.com/longPress.png'
+    'http://oqwhnnwix.bkt.clouddn.com/finger.png',
+    'http://oqwhnnwix.bkt.clouddn.com/home.png', 
+    'http://oqwhnnwix.bkt.clouddn.com/home-logo.png',
+    'http://oqwhnnwix.bkt.clouddn.com/tunnel.png',
+    'http://oqwhnnwix.bkt.clouddn.com/cloud.png',
+    'http://oqwhnnwix.bkt.clouddn.com/word/1.png',
+    'http://oqwhnnwix.bkt.clouddn.com/word/2.png',
+    'http://oqwhnnwix.bkt.clouddn.com/word/3.png',
+    'http://oqwhnnwix.bkt.clouddn.com/word/4.png',
+    'http://oqwhnnwix.bkt.clouddn.com/word/5.png',    
+    'http://oqwhnnwix.bkt.clouddn.com/word/6.png',
+    'http://oqwhnnwix.bkt.clouddn.com/result-share.png',
+    'http://oqwhnnwix.bkt.clouddn.com/link/transition_v.png',
+    'http://oqwhnnwix.bkt.clouddn.com/result-test-again.png',
+    'http://oqwhnnwix.bkt.clouddn.com/longPress.png'
   ];
   if (result !== '-1') {
-    imgSrc.push('http://oqprzqkcx.bkt.clouddn.com/link/result'+ result +'.png');
-    imgSrc.push('http://oqprzqkcx.bkt.clouddn.com/link/result_cloud'+ result +'.png');
+    imgSrc.push('http://oqwhnnwix.bkt.clouddn.com/link/result'+ result +'.png');
+    imgSrc.push('http://oqwhnnwix.bkt.clouddn.com/link/result_cloud'+ result +'.png');
   }
   var loaded = 0;
-  var toload = imgSrc.length - 1;
+  var toload = imgSrc.length;
   for (var i = 0; i < toload; i++) {
     var img = new Image();
 
@@ -69,7 +69,8 @@ var preload = function(callback) {
       }
     }
     img.src = imgSrc[i];
-  }    
+  }
+  console.log(imgSrc);    
 };
 
 var removeShow = function() {
