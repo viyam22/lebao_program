@@ -4,6 +4,12 @@ $(function() {
     : '-1';
   var RESULT = ['0', '1', '2', '3', '4', '5'];
   var resultHash;
+  var TITLE = ['#野出趣#我就是 潮爆IQ博士,世界无法阻止我卖萌', 
+  '#野出趣#我就是浴缸力学大师，宇宙这么大，周末去野一把', 
+  '#野出趣#我就是捏住命运咽喉的男人，黑白键一出手，随时开躁', 
+  '#野出趣#我就是抽象派狂人，老子就是艺术',
+  '#野出趣#我就是逃课贵族，朋友圈学霸是怎样炼成的？',
+  '#野出趣#我就是人类爸爸，以人民的名义，吃一口禁果']
 $.fn.longPress = function(fn0, fn1, fn2) {
   var oldTime, newTime, costTime;
   this.on('touchstart', function(event) {
@@ -52,15 +58,11 @@ var preload = function(callback) {
     'http://oqwhnnwix.bkt.clouddn.com/longPress.png'
   ];
   if (result !== '-1') {
-    imgSrc.push('http://oqwhnnwix.bkt.clouddn.com/link/result'+ result +'.png');
+    imgSrc.push('http://oqwhnnwix.bkt.clouddn.com/link/result0'+ result +'.png');
     imgSrc.push('http://oqwhnnwix.bkt.clouddn.com/link/result_cloud'+ result +'.png');
   }
   var loaded = 0;
-<<<<<<< HEAD
-  var toload = imgSrc.length - 1;
-=======
   var toload = imgSrc.length;
->>>>>>> e07e64ecfec764822640c06d75652a56a8d0624d
   for (var i = 0; i < toload; i++) {
     var img = new Image();
 
@@ -142,9 +144,10 @@ var showResultPage = function() {
   }, 6000);
 } 
 void function() {
-  console.log('result', result)
   listenHashChange(changePage);
   result = result === -1 ? location.hash.split('#/result')[1] : result;
+  var title = result === -1 ? '野出趣' : TITLE[result];
+  $('title').text(title);
   if (result === '-1') {
     //说明未测试过
     if (location.hash === '#/index') {
@@ -192,7 +195,10 @@ void function() {
     localStorage.setItem('result', storageResult);
     //跳转到结果页面
     setTimeout(function() {
+      console.log('----', location.search);
       location.hash = '#/result' + result;
+      // location.replace('')
+      $('title').html(TITLE[result]);
       showResultPage();
     }, 4000);
   }, function() {
@@ -206,6 +212,7 @@ void function() {
   });
   $('.testAgain').on('click', function() {
     // localStorage.removeItem('result');
+    $('title').text('野出趣');
     $('.result-btn-wrap').removeClass('show');
     $('.test-btn').removeClass('hide');
     $('.test-cloud').removeClass('show moveCloud');
@@ -219,56 +226,47 @@ void function() {
   $('.share-tip').on('click', function() {
     $('.share-tip').removeClass('show');
   });
-<<<<<<< HEAD
 
-  // wx.config({
-  //   debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-  //   appId: '', // 必填，公众号的唯一标识
-  //   timestamp: '', // 必填，生成签名的时间戳
-  //   nonceStr: '', // 必填，生成签名的随机串
-  //   signature: '',// 必填，签名，见附录1
-  //   jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+  // var weixinShareLogo = '../assets/images/headImg.png';		
+  // $('body').prepend('<div style=" overflow:hidden; width:0px; height:0; margin:0 auto; position:absolute; top:-800px;"><img src="'+ weixinShareLogo +'"></div>')	};
+
+  // console.log(location.href);
+  // $.ajax({
+  //   type: 'post',
+  //   url: 'http://119.29.26.21:2222/getsignature',
+  //   data: {
+  //       url: location.href.split('#')[0]
+  //   },
+  //   success: function(r) {
+  //     r = JSON.parse(r);
+  //     wx.config({
+  //       debug: true,
+  //       appId: r.appId,
+  //       timestamp: r.timestamp,
+  //       nonceStr: r.nonceStr,
+  //       signature: r.signature,
+  //       jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage', 'chooseImage', 'playVoice']
+  //     });
+  //     wx.ready(function(){
+  //       wx.onMenuShareTimeline({
+  //         title: '野出趣',
+  //         imgUrl: 'http://oqwhnnwix.bkt.clouddn.com/home-logo.png',
+  //         link: location.href,
+  //         desc: '世界无法阻止我卖萌'
+  //       });
+  //       wx.onMenuShareAppMessage({
+  //         title: '野出趣',
+  //         imgUrl: 'http://7xi3je.com1.z0.glb.clouddn.com/image_1471951817.437828.jpg',
+  //         link: location.href,
+  //         desc: '世界无法阻止我卖萌'
+  //       });
+  //     });
+  //     wx.error(res => console.log(res.errMsg));
+  //   },
+  //   error: function(err) {
+  //     console.log(err);
+  //   }
   // });
-
-=======
-  console.log(location.href);
-  $.ajax({
-    type: 'post',
-    url: 'http://192.168.0.53:2222/getsignature',
-    data: {
-        url: location.href.split('#')[0]
-    },
-    success: function(r) {
-      r = JSON.parse(r);
-      wx.config({
-        debug: true,
-        appId: r.appId,
-        timestamp: r.timestamp,
-        nonceStr: r.nonceStr,
-        signature: r.signature,
-        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
-      });
-      wx.ready(function(){
-        wx.onMenuShareTimeline({
-          title: '乐堡 | 吹气',
-          imgUrl: 'http://7xi3je.com1.z0.glb.clouddn.com/image_1471951817.437828.jpg',
-          link: 'http://www.isaac-wjl.com/yefun',
-          desc: 'WhatYouNeed | 的文章专栏与分类。'
-        });
-        wx.onMenuShareAppMessage({
-          title: '乐堡 | 吹气',
-          imgUrl: 'http://7xi3je.com1.z0.glb.clouddn.com/image_1471951817.437828.jpg',
-          link: 'http://www.isaac-wjl.com/yefun',
-          desc: 'WhatYouNeed | 的文章专栏与分类。'
-        });
-      });
-      wx.error(res => console.log(res.errMsg));
-    },
-    error: function(err) {
-      console.log(err);
-    }
-  });
->>>>>>> e07e64ecfec764822640c06d75652a56a8d0624d
 }(); 
 
 
