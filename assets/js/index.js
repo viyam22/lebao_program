@@ -52,7 +52,7 @@ var preload = function(callback) {
     'http://oqwhnnwix.bkt.clouddn.com/longPress.png'
   ];
   if (result !== '-1') {
-    imgSrc.push('http://oqwhnnwix.bkt.clouddn.com/link/result'+ result +'.png');
+    imgSrc.push('http://oqwhnnwix.bkt.clouddn.com/link/result0'+ result +'.png');
     imgSrc.push('http://oqwhnnwix.bkt.clouddn.com/link/result_cloud'+ result +'.png');
   }
   var loaded = 0;

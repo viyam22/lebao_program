@@ -208,29 +208,29 @@ body {
     height: 100%;
   }
   .result0 {
-    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result0.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result00.png);
     background-size: auto 800%;
     /*background-position: center center;*/
     /*background-repeat: no-repeat;*/
   }
   .result1 {
-    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result1.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result01.png);
     background-size: auto 900%;
   }
   .result2 {
-    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result2.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result02.png);
     background-size: auto 1300%;
   }
   .result3 {
-    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result3.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result03.png);
     background-size: auto 1100%;
   }
   .result4 {
-    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result4.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result04.png);
     background-size: auto 1000%;
   }
   .result5 {
-    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result5.png);
+    background-image: url(http://oqwhnnwix.bkt.clouddn.com/link/result05.png);
     background-size: auto 1400%;
   }
   .moveResult0 {
@@ -378,10 +378,10 @@ body {
     background-size: auto 400%;
   }
   .moveResultCloud {
-    -webkit-animation: run-result-cloud 0.8s steps(3) 0s 2;
-    -o-animation: run-result-cloud 0.8s steps(3) 0s 2;
-    -moz-animation: run-result-cloud 0.8s steps(3) 0s 2;
-    animation: run-result-cloud 0.8s steps(3) 0s 2;
+    -webkit-animation: run-result-cloud 0.8s steps(3) 0s 1;
+    -o-animation: run-result-cloud 0.8s steps(3) 0s 1;
+    -moz-animation: run-result-cloud 0.8s steps(3) 0s 1;
+    animation: run-result-cloud 0.8s steps(3) 0s 1;
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;
