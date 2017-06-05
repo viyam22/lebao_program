@@ -218,7 +218,7 @@ void function() {
   console.log(location.href);
   $.ajax({
     type: 'post',
-    url: 'http://192.168.0.53:2222/getsignature',
+    url: 'http://119.29.26.21:2222/getsignature',
     data: {
         url: location.href.split('#')[0]
     },
@@ -230,20 +230,20 @@ void function() {
         timestamp: r.timestamp,
         nonceStr: r.nonceStr,
         signature: r.signature,
-        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
+        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage', 'chooseImage', 'playVoice']
       });
       wx.ready(function(){
         wx.onMenuShareTimeline({
-          title: '乐堡 | 吹气',
-          imgUrl: 'http://7xi3je.com1.z0.glb.clouddn.com/image_1471951817.437828.jpg',
-          link: 'http://www.isaac-wjl.com/yefun',
-          desc: 'WhatYouNeed | 的文章专栏与分类。'
+          title: '野出趣',
+          imgUrl: 'http://oqwhnnwix.bkt.clouddn.com/home-logo.png',
+          link: location.href,
+          desc: '世界无法阻止我卖萌'
         });
         wx.onMenuShareAppMessage({
-          title: '乐堡 | 吹气',
+          title: '野出趣',
           imgUrl: 'http://7xi3je.com1.z0.glb.clouddn.com/image_1471951817.437828.jpg',
-          link: 'http://www.isaac-wjl.com/yefun',
-          desc: 'WhatYouNeed | 的文章专栏与分类。'
+          link: location.href,
+          desc: '世界无法阻止我卖萌'
         });
       });
       wx.error(res => console.log(res.errMsg));
